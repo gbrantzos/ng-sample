@@ -1,13 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import {
-  MatToolbarModule
-} from '@angular/material/toolbar';
-
-const materialModules = [
-  MatToolbarModule
-];
+import { materialModules } from './materialModules';
 
 @NgModule({
   declarations: [],

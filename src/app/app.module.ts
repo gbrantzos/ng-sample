@@ -7,11 +7,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ContentLayoutComponent } from './layout/content-layout/content-layout.component';
 
 import { SharedModule } from '@shared/shared.module';
+import { TopMenuComponent } from './layout/top-menu/top-menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ContentLayoutComponent
+    ContentLayoutComponent,
+    TopMenuComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,9 @@
-<mat-toolbar color='primary'>
-  <span>My Application</span>
-</mat-toolbar>
-<router-outlet></router-outlet>
+<div class="wrapper">
+  <app-top-menu class="toolbar"></app-top-menu>
+
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+
+  <div class="statusbar"> Copyleft </div>
+</div>

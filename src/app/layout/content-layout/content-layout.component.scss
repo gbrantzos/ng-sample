@@ -1,0 +1,23 @@
+.wrapper {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.toolbar {
+	flex-shrink: 0;
+}
+
+.content {
+	flex: 1 1 auto;
+	overflow-y: auto;
+	padding: 0 16px;
+}
+
+.statusbar {
+  background-color: lightgray;
+	flex-shrink: 0;
+  height: 20px;
+
+  font-size: 0.8em;
+}
