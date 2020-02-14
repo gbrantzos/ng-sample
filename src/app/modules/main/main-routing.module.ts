@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
 
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AboutComponent } from './components/about/about.component';
 
 const routes: Routes = [
   {
@@ -12,11 +13,14 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent
-  }
-];
+  },
+  {
+    path: 'about',
+    component: AboutComponent
+  }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class Feature1RoutingModule { }
+export class MainRoutingModule { }

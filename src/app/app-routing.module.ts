@@ -6,14 +6,30 @@ import { ContentLayoutComponent } from './layout/content-layout/content-layout.c
 const routes: Routes = [
   {
     path: '',
+    redirectTo: '/auth/login',
+    pathMatch: 'full'
+  },
+  {
+    path: '',
     component: ContentLayoutComponent,
     children: [
       {
-        path: 'feature1',
-        loadChildren: () => import('@modules/feature1/feature1.module').then(m => m.Feature1Module)
+        path: 'main',
+        loadChildren: () => import('./modules/main/main.module').then(m => m.MainModule)
+      },
+      {
+        path: 'feature2',
+        loadChildren: () => import('@modules/feature2/feature2.module').then(m => m.Feature2Module)
       }
     ]
-  }
+  },
+  {
+    path: 'auth',
+    loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule)
+  },
+
+  // Fallback when no prior routes is matched
+  { path: '**', redirectTo: '/auth/login', pathMatch: 'full' }
 ];
 
 @NgModule({
