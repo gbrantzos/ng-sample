@@ -1,29 +1,42 @@
-<mat-card class="example-card">
-  <mat-card-header>
-    <mat-card-title>Login</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <form class="example-form">
-      <table class="example-full-width" cellspacing="0">
-        <tr>
-          <td>
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
-            </mat-form-field>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Password" [(ngModel)]="password" type="password" name="password" required>
-            </mat-form-field>
-          </td>
-        </tr>
-      </table>
-    </form>
-    <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-raised-button (click)="login()" color="primary">Login</button>
-  </mat-card-actions>
-</mat-card>
+<div class="login-page">
+  <div class="login-wrapper">
+    <div class="login-panel">
+
+      <h3>Welcome to Sample application</h3>
+
+      <form class="login-form" #form="ngForm">
+
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Username" [(ngModel)]="username" name="username" ngModel autocomplete="off"
+            required>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" id="password" required
+            name="password" ngModel>
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+        </mat-form-field>
+
+        <button [disabled]="!form.valid || working" class="full-width login-button" mat-raised-button (click)="login()"
+          color="primary">
+          <div *ngIf="!working">Log In</div>
+          <div class="centered" *ngIf="working">
+            Trying to log in... &nbsp;
+            <mat-icon>
+              <mat-spinner diameter="20">
+              </mat-spinner>
+            </mat-icon>
+          </div>
+        </button>
+
+        <div class="errors">
+          <mat-error class='mat-small' *ngIf="errorMessage">{{errorMessage}}</mat-error>
+        </div>
+
+      </form>
+
+    </div>
+
+    <div class="login-admin">Log in as&nbsp;<span class="link">super user</span></div>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -8,10 +9,13 @@ import { AuthService } from 'src/app/core/services/auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  public hide = true;
+  public working = false;
+  public errorMessage = '';
+
   public username: string;
   public password: string;
 
-  public showSpinner = false;
 
   private redirectUrl: string;
 
@@ -29,9 +33,25 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  login = () => {
-    this.authService.login();
-    this.router.navigateByUrl(this.redirectUrl);
+  login() {
+    this.working = true;
+    this.errorMessage = '';
+
+    this.authService
+      .login()
+      .pipe(
+        finalize(() => this.working = false)
+      )
+      .subscribe(
+        _ => {
+          console.log('On subscribe...');
+          this.router.navigateByUrl(this.redirectUrl);
+        },
+        error => {
+          console.error(error);
+          this.errorMessage = error;
+        }
+      );
   }
 
 }
