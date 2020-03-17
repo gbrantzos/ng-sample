@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +13,11 @@ export class AuthService {
   }
 
   login(): Observable<void> {
-    const subject = new Subject<void>();
+    const subject = new BehaviorSubject<void>(null);
 
     setTimeout(() => {
       subject.error('Log in failed!');
-    }, 2000);
+    }, 20000);
 
     setTimeout(() => {
       console.log('On service');
