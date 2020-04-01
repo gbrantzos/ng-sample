@@ -1,1 +1,25 @@
 <p>dashboard works!</p>
+<button (click)="search()">Test</button>
+
+<div *ngIf="userList$ | async as userList; else noData">
+  <div *ngIf="userList.length; else empty">
+    <ul>
+      <li *ngFor="let user of userList">
+        <p>{{user.id}}, {{user.name}} e-mail: {{user.email}}</p>
+      </li>
+    </ul>
+  </div>
+
+  <ng-template #empty>
+    <p>Sorry no data found!</p>
+  </ng-template>
+
+  <!-- <pre>{{userList | json}}</pre> -->
+</div>
+
+
+<!-- Waiting -->
+<ng-template #noData>
+  <p *ngIf="loading">Waiting for data ...</p>
+  <p *ngIf="!loading && errors">Something wrong happened! - {{errors}}</p>
+</ng-template>

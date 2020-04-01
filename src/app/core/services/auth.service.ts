@@ -5,7 +5,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private logged = false;
+  private logged = true;
   constructor() { }
 
   get isLogged(): boolean {
