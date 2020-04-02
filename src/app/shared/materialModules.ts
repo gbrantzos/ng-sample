@@ -5,6 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 export const materialModules = [
   MatToolbarModule,
@@ -13,5 +14,6 @@ export const materialModules = [
   MatCardModule,
   MatInputModule,
   MatButtonModule,
-  MatIconModule
+  MatIconModule,
+  MatAutocompleteModule
 ];

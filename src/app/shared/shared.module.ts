@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '@shared/material.module';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -10,11 +10,13 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     MaterialModule
   ],
   exports: [
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     MaterialModule
   ]

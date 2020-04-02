@@ -1,5 +1,5 @@
 <p>dashboard works!</p>
-<button (click)="search()">Test</button>
+<button (click)="doSearch()">Test</button>
 
 <div *ngIf="userList$ | async as userList; else noData">
   <div *ngIf="userList.length; else empty">
@@ -17,6 +17,31 @@
   <!-- <pre>{{userList | json}}</pre> -->
 </div>
 
+<div>
+
+  <mat-form-field class="item-list">
+    <input #search type="text" placeholder="Item" matInput [formControl]="inputControl" [matAutocomplete]="items">
+    <mat-hint>Start typing to search (more than 2 characters)</mat-hint>
+  </mat-form-field>
+
+  <mat-autocomplete #items="matAutocomplete" [panelWidth]=600>
+    <mat-option class="panel" *ngFor="let item of itemList$ | async" [value]="item">
+      {{ item }}
+    </mat-option>
+  </mat-autocomplete>
+
+  <!-- <input [formControl]="inputControl" #search type="text" /> -->
+  <button (click)="doItemSearch(search.value)">Search items</button>
+  <!--
+  <div *ngIf="itemList$ | async as itemList">
+    <ul>
+      <li *ngFor="let item of itemList">
+        {{item}}
+      </li>
+    </ul>
+  </div> -->
+
+</div>
 
 <!-- Waiting -->
 <ng-template #noData>
