@@ -14,7 +14,6 @@ import {
   switchMap
 } from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
-import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
 @Component({
   selector: 'app-dashboard',
